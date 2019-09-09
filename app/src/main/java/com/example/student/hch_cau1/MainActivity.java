@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnDangNhap;
+    private Button btnDangNhap, btnThoat;
     private CheckBox cbkLuuThongTin;
 
     @Override
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnDangNhap = findViewById(R.id.btnDangNhap);
-
+        btnThoat = findViewById(R.id.btnThoat);
 
         cbkLuuThongTin = findViewById(R.id.ckbLuuThongTin);
 
@@ -35,7 +35,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        btnThoat = findViewById(R.id.btnThoat);
+        btnThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog();
+            }
+        });
     }
 
+    private void alertDialog() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Xác nhận");
+        alert.setMessage("Bạn có muốn thoát chương trình ?");
+
+        alert.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.setNegativeButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+
+        AlertDialog dialog = alert.create();
+        alert.show();
+    }
 }
